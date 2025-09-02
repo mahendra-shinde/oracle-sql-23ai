@@ -1,6 +1,6 @@
-# oracle-sql-23ai
 # Study material for Oracle 23ai SQL Developer
 
+Oracle Database 23ai is the latest release in Oracle's flagship database family, introducing advanced AI integration and automation features. This version enhances developer productivity with built-in AI vector search, improved JSON support, and automated data management capabilities. Oracle 23ai is designed to simplify complex data tasks, accelerate analytics, and provide robust security for modern applications.
 
 ## Topics
 
