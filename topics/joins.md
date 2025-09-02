@@ -50,6 +50,7 @@ WHERE e.manager_id = m.employee_id;
 
 ## 2. ANSI SQL:1999 and Later Joins (Standard Syntax)
 
+
 ### a. INNER JOIN
 Returns rows when there is a match in both tables.
 
@@ -58,6 +59,40 @@ SELECT e.employee_id, e.last_name, d.department_name
 FROM employees e
 INNER JOIN departments d ON e.department_id = d.department_id;
 ```
+
+### Additional Notes: NATURAL JOIN and USING Operator
+
+#### NATURAL JOIN
+The `NATURAL JOIN` clause automatically joins tables based on all columns with the same name and compatible data types in both tables. It eliminates the need to specify the join condition explicitly.
+
+**Example:**
+```sql
+SELECT e.employee_id, e.last_name, d.department_name
+FROM employees e
+NATURAL JOIN departments d;
+```
+*This will join on the `department_id` column if it exists in both tables.*
+
+**Caution:**
+- Use `NATURAL JOIN` only when you are certain about the column names and their meanings in both tables.
+- If multiple columns have the same name, all are used in the join condition.
+
+#### USING Operator
+The `USING` clause specifies the column(s) to join on, simplifying the join condition when the column name is the same in both tables.
+
+**Example:**
+```sql
+SELECT e.employee_id, e.last_name, d.department_name
+FROM employees e
+JOIN departments d USING (department_id);
+```
+*This is equivalent to joining on `e.department_id = d.department_id`.*
+
+**Key Points:**
+- The column(s) listed in `USING` must exist in both tables.
+- The result set will show the join column only once.
+
+---
 
 ### b. LEFT OUTER JOIN
 Returns all rows from the left table, and matched rows from the right table.

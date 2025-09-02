@@ -19,10 +19,30 @@ SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD') AS today FROM dual;
 - **CASE**: Conditional logic in SQL statements.
 - **DECODE()**: Performs IF-THEN-ELSE logic.
 
+
+### Example: COALESCE
+Returns the first non-NULL value from the list of columns/expressions.
+```sql
+SELECT employee_id, COALESCE(commission_pct, 0) AS commission
+FROM employees;
+```
+
+### Example: DECODE
+Performs IF-THEN-ELSE logic in a compact form.
+```sql
+SELECT employee_id, job_id,
+	   DECODE(job_id,
+			  'IT_PROG', 'Programmer',
+			  'SA_REP', 'Sales Rep',
+			  'AD_VP', 'Admin VP',
+			  'Other') AS job_title
+FROM employees;
+```
+
 ### Example: CASE
 ```sql
 SELECT employee_id, salary,
-	CASE WHEN salary > 5000 THEN 'High' ELSE 'Low' END AS salary_level
+	   CASE WHEN salary > 5000 THEN 'High' ELSE 'Low' END AS salary_level
 FROM employees;
 ```
 
