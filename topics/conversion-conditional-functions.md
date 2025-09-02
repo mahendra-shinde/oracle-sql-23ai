@@ -46,6 +46,17 @@ SELECT employee_id, salary,
 FROM employees;
 ```
 
+
 ### Tips
 - Use conversion functions to ensure data consistency.
 - Conditional functions simplify complex logic in queries.
+
+---
+
+## Practice Exercises
+
+1. Display employee IDs and commission, showing 0 if commission is NULL.
+2. Show employee IDs and display 'NO-COMMISSION' if commission_pct is NULL, otherwise display 'ELIGIBLE FOR COMMISSION'.
+3. List employee IDs and job titles using DECODE for at least three job IDs.
+4. Convert hire dates to 'YYYY-MM' format for all employees.
+5. Use COALESCE to display the first non-null value among commission, bonus, or 0 for each employee.
