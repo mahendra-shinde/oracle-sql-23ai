@@ -36,6 +36,7 @@ Follow these steps to install the HR schema using the provided `hr-schema.sql` f
     At the SQL*Plus prompt, run:
 
     ```sql
+    ALTER SESSION SET CONTAINER=FREEPDB1;
     @hr_install.sql
     ```
 
