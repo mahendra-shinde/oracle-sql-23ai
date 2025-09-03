@@ -1,7 +1,5 @@
 # Steps to Install Sample HR Schema
 
-Follow these steps to install the HR schema using the provided `hr-schema.sql` file:
-
 ## Prerequisites
 
 - Oracle Database is installed and running.
@@ -30,8 +28,12 @@ Follow these steps to install the HR schema using the provided `hr-schema.sql` f
 3. **Connect to your database using SQL*Plus and run the installation script:**
 
     ```powershell
-    sqlplus sys/orcle@localhost:1521/freepdb1 as sysdba
+    sqlplus sys/oracle@localhost:1521/freepdb1 as sysdba
     ```
+
+    > If above command fails to connect to database, try following command instead:
+
+    `sqlplus sys/oracle as sydba`
 
     At the SQL*Plus prompt, run:
 
@@ -46,6 +48,10 @@ Follow these steps to install the HR schema using the provided `hr-schema.sql` f
 
 5. **For Rest of the prompts, just press ENTER each time**
 
+6.  **To Verify if Oracle Transaction Listner is working, try below command in command prompt:**
+    `lsnrctl status`
+
+
 6.  **After Installation is Over, connect using SQL Developer**
 
 	```ini
@@ -56,3 +62,41 @@ Follow these steps to install the HR schema using the provided `hr-schema.sql` f
 	Username= hr
 	Password= hr
 	```
+
+---
+
+## Troubleshooting Common Connectivity Issues
+
+If you encounter issues connecting to the Oracle database, try the following steps:
+
+1. **Check if the Oracle Listener is running:**
+    ```powershell
+    lsnrctl status
+    ```
+    If the listener is not running, start it with:
+    ```powershell
+    lsnrctl start
+    ```
+
+2. **Verify the database service is registered with the listener:**
+    - In the output of `lsnrctl status`, ensure your service (e.g., `freepdb1`) is listed under "Services Summary".
+
+3. **Test connectivity using tnsping:**
+    ```powershell
+    tnsping freepdb1
+    ```
+    If this fails, check your network configuration and firewall settings.
+
+4. **Check your TNS configuration:**
+    - Ensure that `tnsnames.ora` (usually in `ORACLE_HOME\network\admin`) contains the correct service name and connection details.
+
+5. **Check for port conflicts or firewall issues:**
+    - Make sure port `1521` is open and not blocked by Windows Firewall or other security software.
+
+6. **Review Oracle service status:**
+    - Open Services (`services.msc`) and ensure all Oracle services are running.
+
+7. **Check for typos in connection details:**
+    - Double-check hostname, service name, port, username, and password.
+
+If problems persist, consult the Oracle alert logs and listener logs for more detailed error messages.
